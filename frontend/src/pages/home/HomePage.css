@@ -1,0 +1,20 @@
+.home-page {
+    background-color: #F5F7FB;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.main {
+    width: 100%;
+    margin-left: 261px;
+    padding: 0 30px;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 26px;
+    /* flex-wrap: wrap; */
+}

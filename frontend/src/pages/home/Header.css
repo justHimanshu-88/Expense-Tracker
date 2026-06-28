@@ -1,0 +1,55 @@
+.home-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 30px 0;
+}
+
+
+
+.home-page-header h1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+
+
+.header-right-section {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+
+
+.header-right-section img {
+    width: 24px;
+}
+
+.user-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-profile {
+    background-color: #6D5DF6;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+.user-profile-container p {
+    font-weight: 600;
+}

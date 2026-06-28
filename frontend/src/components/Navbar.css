@@ -1,0 +1,107 @@
+.navbar {
+    position: fixed;
+    width: 240px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    padding: 14px 10px;
+
+    border-right: 1px solid #E5E7EB;
+    background-color: #ffffff;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.03);
+
+    z-index: 100;
+}
+
+
+/*  Navbar Top Section  */
+
+
+.navbar-top-section {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.navbar-top-section img {
+    width: 40px;
+    margin-left: 8px;
+
+    filter: invert(41%) sepia(98%) saturate(3830%) hue-rotate(228deg) brightness(102%) contrast(89%);
+}
+
+.navbar-top-section h1 {
+    font-size: 28px;
+    font-weight: 700;
+
+    margin: 0;
+}
+
+
+/*  Navbar Middle Section  */
+
+
+.navbar-middle-section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*  Each Navbar Tab  */
+
+.navbar-tab {
+    width: 82%;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 16px;
+    color: #6b7280;
+    font-weight: 500;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: transparent;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.navbar-tab:hover {
+    background: #F5F3FF;
+    /* color: #5B4DF1; */
+
+    /* .navbar-tab-icon {
+        filter: invert(33%) sepia(88%) saturate(2492%) hue-rotate(233deg) brightness(100%) contrast(94%);
+    } */
+}
+
+.navbar-tab-icon {
+    width: 22px;
+    margin-right: 10px;
+}
+
+
+
+/*  Active Navbar Tab  */
+
+.navbar-tab.active {
+    color: #6D5DF6;
+    background: #F1EEFF;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(109, 93, 246, 0.12);
+}
+
+
+
+/*  Active Navbar Tab Icon  */
+
+.navbar-tab-icon.active {
+    filter: invert(33%) sepia(88%) saturate(2492%) hue-rotate(233deg) brightness(100%) contrast(94%);
+}
