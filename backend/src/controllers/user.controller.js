@@ -1,11 +1,11 @@
+import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
+import { User } from "../models/user.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
-import { User } from "../models/user.model.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { v2 as cloudinary } from "cloudinary";
-import mongoose from "mongoose";
 
 
 const generateAccessAndRefreshTokens = async (user) => {
@@ -24,15 +24,12 @@ const generateAccessAndRefreshTokens = async (user) => {
     } catch (error) {
         throw new ApiError(500, "Something went wrong while generating access and refresh token");
     }
-
 };
 
 const registerUser = asyncHandler(async (req, res) => {
 
     const { username, fullname, email, password } = req.body;
 
-    // console.log({ username, fullname, email, password })
-    // console.log(req.file)
 
     if (
         [username, fullname, email, password].some(field => field.trim() === "")
@@ -71,7 +68,6 @@ const registerUser = asyncHandler(async (req, res) => {
             "User registered successfully"
         )
     );
-
 });
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -109,7 +105,6 @@ const loginUser = asyncHandler(async (req, res) => {
             200, loggedInUser, "User logged In successfully"
         )
     );
-
 });
 
 const logoutUser = asyncHandler(async (req, res) => {
@@ -135,7 +130,6 @@ const logoutUser = asyncHandler(async (req, res) => {
     .json(
         new ApiResponse(200, {}, "User logged Out Successfully")
     );
-
 });
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
@@ -178,7 +172,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     } catch (error) {
         throw new ApiError(401, error?.message || "invalid refresh token")
     }
-
 });
 
 const changeCurrentPassword = asyncHandler(async (req, res) => {
@@ -199,7 +192,6 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     .json(
         new ApiResponse(200, {}, "Password changed successfully")
     );
-
 });
 
 const getCurrentUser = asyncHandler((req, res) => {
