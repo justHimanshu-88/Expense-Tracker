@@ -5,6 +5,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import { v2 as cloudinary } from "cloudinary";
+import mongoose from "mongoose";
 
 
 const generateAccessAndRefreshTokens = async (user) => {
@@ -262,6 +263,33 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     );
 });
 
+const getUserTransactionHistory = asyncHandler(async (req, res) => {
+
+    const transactions = await User.aggregate([
+        {
+            $match: {
+                _id: new mongoose.Types.ObjectId(req.user?._id)
+            }
+        },
+        {
+            $lookup: {
+                from: "transactions",
+                localField: "_id",
+                foreignField: "user",
+                as: "transactionHistory"
+            }
+        }
+    ]);
+
+    if (!transactions?.length) throw new ApiError(404, "user does not exists");
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(200, transactions, "User transaction history fetched successfully")
+    );
+});
+
 
 export {
     registerUser,
@@ -271,5 +299,6 @@ export {
     changeCurrentPassword,
     getCurrentUser,
     updateAccountDetails,
-    updateUserAvatar
+    updateUserAvatar,
+    getUserTransactionHistory
 };
