@@ -1,0 +1,433 @@
+:root {
+    --reg-brand-primary: #5A4CE6;
+    --reg-brand-hover: #4B3DC9;
+    --reg-brand-active: #3E31B2;
+    --reg-brand-light: #EEF2FF;
+    --reg-brand-ring: rgba(90, 76, 230, 0.2);
+
+    --reg-bg-canvas: #F8FAFC;
+    --reg-surface-card: #FFFFFF;
+    --reg-surface-input: #F8FAFC;
+    --reg-surface-subtle: #F1F5F9;
+    --reg-border: #E2E8F0;
+    --reg-border-focus: #5A4CE6;
+
+    --reg-text-primary: #0F172A;
+    --reg-text-secondary: #64748B;
+    --reg-text-muted: #94A3B8;
+
+    --reg-radius-card: 24px;
+    --reg-radius-control: 12px;
+    --reg-radius-pill: 9999px;
+
+    --reg-shadow-card: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 14px -2px rgba(15, 23, 42, 0.03);
+    --reg-shadow-button: 0 4px 14px 0 rgba(90, 76, 230, 0.35);
+    --reg-shadow-button-hover: 0 6px 20px 0 rgba(90, 76, 230, 0.45);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+    --reg-brand-primary: #6366F1;
+    --reg-brand-hover: #7579FF;
+    --reg-brand-active: #4F46E5;
+    --reg-brand-light: rgba(99, 102, 241, 0.15);
+    --reg-brand-ring: rgba(99, 102, 241, 0.3);
+
+    --reg-bg-canvas: #0B1120;
+    --reg-surface-card: #1E293B;
+    --reg-surface-input: #0F172A;
+    --reg-surface-subtle: #1E293B;
+    --reg-border: #334155;
+    --reg-border-focus: #818CF8;
+
+    --reg-text-primary: #F8FAFC;
+    --reg-text-secondary: #94A3B8;
+    --reg-text-muted: #64748B;
+
+    --reg-shadow-card: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --reg-shadow-button: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+    --reg-shadow-button-hover: 0 6px 22px 0 rgba(99, 102, 241, 0.55);
+}
+
+/* 2. Global Resets & Layout */
+.register-page-wrapper {
+    min-height: 100vh;
+    background-color: var(--reg-bg-canvas);
+    color: var(--reg-text-primary);
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    box-sizing: border-box;
+}
+
+.register-page-wrapper *,
+.register-page-wrapper *::before,
+.register-page-wrapper *::after {
+    box-sizing: border-box;
+}
+
+/* 3. Top Navigation Header */
+.reg-top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--reg-border);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.dark.reg-top-bar {
+    background-color: rgba(15, 23, 42, 0.9);
+}
+
+.reg-top-bar-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reg-brand-cluster {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.reg-brand-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--reg-brand-primary), #4338CA);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(90, 76, 230, 0.25);
+}
+
+.reg-brand-title {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--reg-text-primary);
+}
+
+.reg-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Auth Segmented Switch */
+.reg-auth-toggle-group {
+    display: flex;
+    background-color: var(--reg-surface-subtle);
+    border: 1px solid var(--reg-border);
+    padding: 3px;
+    border-radius: var(--reg-radius-control);
+}
+
+.reg-auth-toggle-btn {
+    border: none;
+    background: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    color: var(--reg-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.reg-auth-toggle-btn.active {
+    background-color: var(--reg-brand-primary);
+    color: #FFFFFF;
+    box-shadow: 0 1px 4px rgba(90, 76, 230, 0.3);
+}
+
+/* Theme Toggle Button */
+.reg-theme-toggle-btn {
+    background-color: transparent;
+    border: 1px solid var(--reg-border);
+    color: var(--reg-text-secondary);
+    padding: 0.45rem;
+    border-radius: var(--reg-radius-control);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.reg-theme-toggle-btn:hover {
+    background-color: var(--reg-surface-subtle);
+    color: var(--reg-text-primary);
+}
+
+/* 4. Main Viewport & Entrance Keyframes */
+.reg-viewport {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.reg-card {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--reg-surface-card);
+    border: 1px solid var(--reg-border);
+    border-radius: var(--reg-radius-card);
+    box-shadow: var(--reg-shadow-card);
+    padding: 2.25rem 2rem;
+    position: relative;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 5. Circular Profile Avatar Uploader */
+.reg-avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.reg-avatar-circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background-color: var(--reg-surface-input);
+    border: 2px dashed var(--reg-border);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.reg-avatar-circle:hover {
+    border-color: var(--reg-brand-primary);
+    background-color: var(--reg-brand-light);
+}
+
+.reg-avatar-placeholder {
+    color: var(--reg-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.reg-avatar-circle:hover .reg-avatar-placeholder {
+    color: var(--reg-brand-primary);
+}
+
+.reg-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--reg-brand-primary);
+}
+
+/* Bottom-right circular badge with marker/pen icon */
+.reg-avatar-edit-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--reg-brand-primary);
+    color: #FFFFFF;
+    border: 2.5px solid var(--reg-surface-card);
+    box-shadow: 0 2px 8px rgba(90, 76, 230, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.reg-avatar-edit-badge:hover {
+    background-color: var(--reg-brand-hover);
+    transform: scale(1.08);
+}
+
+.reg-hidden-file-input {
+    display: none;
+}
+
+/* 6. Form Headers */
+.reg-card-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.reg-card-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--reg-text-primary);
+    margin: 0;
+}
+
+.reg-card-subtitle {
+    font-size: 0.8125rem;
+    color: var(--reg-text-secondary);
+    margin-top: 0.35rem;
+}
+
+/* 7. Input Fields */
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reg-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.reg-field-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--reg-text-secondary);
+}
+
+.reg-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.reg-input-icon {
+    position: absolute;
+    left: 0.875rem;
+    color: var(--reg-text-muted);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.reg-input {
+    width: 100%;
+    padding: 0.6875rem 2.5rem 0.6875rem 2.625rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--reg-text-primary);
+    background-color: var(--reg-surface-input);
+    border: 1px solid var(--reg-border);
+    border-radius: var(--reg-radius-control);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.reg-input::placeholder {
+    color: var(--reg-text-muted);
+    font-size: 13px;
+    word-spacing: 0.12rem;
+}
+
+.reg-input:focus {
+    background-color: var(--reg-surface-card);
+    border-color: var(--reg-border-focus);
+    box-shadow: 0 0 0 3px var(--reg-brand-ring);
+}
+
+.reg-trailing-btn {
+    position: absolute;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--reg-text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.reg-trailing-btn:hover {
+    color: var(--reg-text-primary);
+}
+
+/* 8. Submit Button */
+.reg-submit-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.8125rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: #FFFFFF;
+    background-color: var(--reg-brand-primary);
+    border: none;
+    border-radius: var(--reg-radius-control);
+    cursor: pointer;
+    box-shadow: var(--reg-shadow-button);
+    transition: all 0.2s ease;
+}
+
+.reg-submit-btn:hover {
+    background-color: var(--reg-brand-hover);
+    box-shadow: var(--reg-shadow-button-hover);
+    transform: translateY(-1px);
+}
+
+.reg-submit-btn:active {
+    background-color: var(--reg-brand-active);
+    transform: translateY(0);
+}
+
+/* 9. Card Footer */
+.reg-card-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--reg-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.reg-link-inline {
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-weight: 700;
+    color: var(--reg-brand-primary);
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: color 0.2s ease;
+}
+
+.reg-link-inline:hover {
+    color: var(--reg-brand-hover);
+    text-decoration: underline;
+}
+
+/* 10. Responsive Adjustments */
+@media (max-width: 480px) {
+    .reg-card-animated {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .reg-top-bar {
+        padding: 0.625rem 1rem;
+    }
+}
