@@ -1,15 +1,16 @@
+import useTheme from "../../context/theme/useTheme";
 import { useState } from "react";
-import { useLocalStorage } from "../../utils/useLocalStorage";
 import "./LoginPage.css";
 
 
 export function LoginPage() {
 
+    const { theme, setTheme } = useTheme();
+
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [remember, setRemember] = useState(false);
-    const [theme, setTheme] = useLocalStorage("theme", "light");
 
 
     const handleSubmit = (e) => {
@@ -169,7 +170,7 @@ export function LoginPage() {
                                 </div>
                             </div>
 
-                            <div class="mini-quote-banner">
+                            <div className="mini-quote-banner">
                                 <div>
                                     <svg
                                         width="16"
@@ -177,7 +178,7 @@ export function LoginPage() {
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        stroke-width="2"
+                                        strokeWidth="2"
                                     >
                                         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
                                     </svg>
@@ -283,7 +284,7 @@ export function LoginPage() {
                                                                 viewBox="0 0 24 24"
                                                                 fill="none"
                                                                 stroke="currentColor"
-                                                                stroke-width="2"
+                                                                strokeWidth="2"
                                                             >
                                                                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
                                                                 <circle cx="12" cy="12" r="3" />

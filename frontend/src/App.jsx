@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router";
 import { HomePage } from "./pages/home/HomePage";
 import { LoginPage } from "./pages/login/LoginPage";
 import { RegisterPage } from "./pages/register/RegisterPage";
-import './App.css';
+import "./App.css";
 
 function App() {
 

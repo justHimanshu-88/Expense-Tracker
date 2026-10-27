@@ -1,11 +1,11 @@
+import useTheme from "../../context/theme/useTheme";
 import { useState, useRef } from "react";
-import { useLocalStorage } from "../../utils/useLocalStorage";
 import "./RegisterPage.css";
 
 
 export function RegisterPage() {
 
-    const [theme, setTheme] = useLocalStorage("theme", "light");
+    const { theme, setTheme } = useTheme();
 
     // Form input states
     const [avatarPreview, setAvatarPreview] = useState(null);
